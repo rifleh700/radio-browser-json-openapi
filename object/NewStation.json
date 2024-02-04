@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "required": [
+    "name",
+    "url"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the station. Max 400 chars",
+      "example": "Best Radio"
+    },
+    "url": {
+      "type": "string",
+      "description": "The URL of the station",
+      "example": "http://www.example.com/test.pls"
+    },
+    "homepage": {
+      "type": "string",
+      "description": "The homepage URL of the station",
+      "example": "https://www.example.com"
+    },
+    "favicon": {
+      "type": "string",
+      "description": "The URL of an image file (jpg or png)",
+      "example": "https://www.example.com/icon.png"
+    },
+    "countrycode": {
+      "type": "string",
+      "description": "The 2 letter countrycode of the country where the radio station is located",
+      "example": "AT"
+    },
+    "state": {
+      "type": "string",
+      "description": "The name of the part of the country where the station is located",
+      "example": "Vienna"
+    },
+    "language": {
+      "type": "string",
+      "description": "The main language used in spoken text parts of the radio station",
+      "example": "English"
+    },
+    "tags": {
+      "type": "string",
+      "description": "A list of tags separated by commas to describe the station",
+      "example": "jazz,pop,rock,indie"
+    },
+    "geo_lat": {
+      "type": "number",
+      "format": "double",
+      "description": "The latitude of the stream location",
+      "example": "12.3456"
+    },
+    "geo_long": {
+      "type": "number",
+      "format": "double",
+      "description": "The longitude of the stream location",
+      "example": "-12.3456"
+    }
+  }
+}
