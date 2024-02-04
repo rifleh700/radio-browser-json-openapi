@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "properties": {
+    "ok": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "string",
+      "example": "retrieved station url"
+    },
+    "stationuuid": {
+      "type": "string",
+      "example": "9617a958-0601-11e8-ae97-52543be04c81"
+    },
+    "name": {
+      "type": "string",
+      "example": "Station name"
+    },
+    "url": {
+      "type": "string",
+      "example": "http://this.is.an.url"
+    }
+  }
+}

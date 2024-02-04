@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "properties": {
+    "supported_version": {
+      "type": "integer",
+      "format": "int32",
+      "example": "1"
+    },
+    "software_version": {
+      "type": "string",
+      "example": "0.7.25"
+    },
+    "status": {
+      "type": "string",
+      "example": "OK"
+    },
+    "stations": {
+      "type": "integer",
+      "format": "int32",
+      "example": "44087"
+    },
+    "stations_broken": {
+      "type": "integer",
+      "format": "int32",
+      "example": "318"
+    },
+    "tags": {
+      "type": "integer",
+      "format": "int32",
+      "example": "9891"
+    },
+    "clicks_last_hour": {
+      "type": "integer",
+      "format": "int32",
+      "example": "7474"
+    },
+    "clicks_last_day": {
+      "type": "integer",
+      "format": "int32",
+      "example": "158933"
+    },
+    "languages": {
+      "type": "integer",
+      "format": "int32",
+      "example": "553"
+    },
+    "countries": {
+      "type": "integer",
+      "format": "int32",
+      "example": "217"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "order": {
+    "name": "order",
+    "in": "query",
+    "description": "Name of the attribute the result list will be sorted by",
+    "schema": {
+      "type": "string",
+      "default": "name",
+      "enum": [
+        "name",
+        "stationcount"
+      ]
+    }
+  },
+  "reverse": {
+    "name": "reverse",
+    "in": "query",
+    "description": "Reverse the result list if set to true",
+    "schema": {
+      "type": "boolean",
+      "default": "false"
+    }
+  },
+  "hidebroken": {
+    "name": "hidebroken",
+    "in": "query",
+    "description": "Do not count broken stations",
+    "schema": {
+      "type": "boolean",
+      "default": "false"
+    }
+  },
+  "offset": {
+    "name": "offset",
+    "in": "query",
+    "description": "Starting value of the result list from the database. For example, if you want to do paging on the server side",
+    "schema": {
+      "type": "integer",
+      "format": "int32",
+      "default": "0"
+    }
+  },
+  "limit": {
+    "name": "limit",
+    "in": "query",
+    "description": "Number of returned datarows (stations) starting with offset",
+    "schema": {
+      "type": "integer",
+      "format": "int32",
+      "default": "100000"
+    }
+  }
+}

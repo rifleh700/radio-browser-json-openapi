@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "stationuuid": {
+      "type": "string",
+      "example": "963134e8-0601-11e8-ae97-52543be04c81"
+    },
+    "clickuuid": {
+      "type": "string",
+      "example": "ce9ad7bd-34bf-11ea-ac52-52543be04c81"
+    },
+    "clicktimestamp_iso8601": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2020-01-11T23:14:58Z"
+    },
+    "clicktimestamp": {
+      "type": "string",
+      "example": "2020-01-11 23:14:58"
+    }
+  }
+}

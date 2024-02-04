@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Alabama"
+    },
+    "country": {
+      "type": "string",
+      "example": "United States of America"
+    },
+    "stationcount": {
+      "type": "integer",
+      "format": "int64",
+      "example": "6"
+    }
+  }
+}

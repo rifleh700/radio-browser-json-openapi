@@ -1,0 +1,999 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Radio Browser OpenAPI",
+    "description": "https://api.radio-browser.info/",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://{host}/json",
+      "variables": {
+        "host": {
+          "default": "de1.api.radio-browser.info"
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "RadioBrowser",
+      "description": "The general tag"
+    }
+  ],
+  "paths": {
+    "/countries": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A JSON-encoded list of all countries in the database. If a filter is given, it will only return the ones containing the filter as substring",
+        "operationId": "getCountries",
+        "parameters": [
+          {
+            "$ref": "param/Filter.json#/order"
+          },
+          {
+            "$ref": "param/Filter.json#/reverse"
+          },
+          {
+            "$ref": "param/Filter.json#/hidebroken"
+          },
+          {
+            "$ref": "param/Filter.json#/offset"
+          },
+          {
+            "$ref": "param/Filter.json#/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Country.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/codecs": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A JSON-encoded list of all codecs in the database. If a filter is given, it will only return the ones containing the filter as substring",
+        "operationId": "getCodecs",
+        "parameters": [
+          {
+            "$ref": "param/Filter.json#/order"
+          },
+          {
+            "$ref": "param/Filter.json#/reverse"
+          },
+          {
+            "$ref": "param/Filter.json#/hidebroken"
+          },
+          {
+            "$ref": "param/Filter.json#/offset"
+          },
+          {
+            "$ref": "param/Filter.json#/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Codec.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/states": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A JSON-encoded list of all states in the database. Countries are divided into states. If a filter is given, it will only return the ones containing the filter as substring. If a country is given, it will only display states in this country",
+        "operationId": "getStates",
+        "parameters": [
+          {
+            "$ref": "param/Filter.json#/order"
+          },
+          {
+            "$ref": "param/Filter.json#/reverse"
+          },
+          {
+            "$ref": "param/Filter.json#/hidebroken"
+          },
+          {
+            "$ref": "param/Filter.json#/offset"
+          },
+          {
+            "$ref": "param/Filter.json#/limit"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Filter states by country name",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/State.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/languages": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A JSON-encoded list of all languages in the database. If a filter is given, it will only return the ones containing the filter as substring",
+        "operationId": "getLanguages",
+        "parameters": [
+          {
+            "$ref": "param/Filter.json#/order"
+          },
+          {
+            "$ref": "param/Filter.json#/reverse"
+          },
+          {
+            "$ref": "param/Filter.json#/hidebroken"
+          },
+          {
+            "$ref": "param/Filter.json#/offset"
+          },
+          {
+            "$ref": "param/Filter.json#/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Language.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A JSON-encoded list of all tags in the database. If a filter is given, it will only return the ones containing the filter as substring",
+        "operationId": "getTags",
+        "parameters": [
+          {
+            "$ref": "param/Filter.json#/order"
+          },
+          {
+            "$ref": "param/Filter.json#/reverse"
+          },
+          {
+            "$ref": "param/Filter.json#/hidebroken"
+          },
+          {
+            "$ref": "param/Filter.json#/offset"
+          },
+          {
+            "$ref": "param/Filter.json#/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Tag.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checks": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of station check results. If a station UUID is provided, the whole history will be returned. If a station ID is not provided, a list of all last checks of all stations will be sent (without older check results)",
+        "operationId": "getStationChecks",
+        "parameters": [
+          {
+            "name": "stationuuid",
+            "in": "query",
+            "description": "If set, only list check result of the matching station",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lastcheckuuid",
+            "in": "query",
+            "description": "If set, only list checks after the check with the given check",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "seconds",
+            "in": "query",
+            "description": "if > 0, it will only return history entries from the last 'seconds' seconds",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": "0"
+            }
+          },
+          {
+            "$ref": "param/Filter.json#/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/StationCheck.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clicks": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of station clicks. If a station UUID is provided, only clicks of the station will be returned. If a station UUID is not provided, a list of all clicks of all stations will be sent (chunksize 10000)",
+        "operationId": "getStationClicks",
+        "parameters": [
+          {
+            "name": "stationuuid",
+            "in": "query",
+            "description": "If set, only list check result of the matching station",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lastclickuuid",
+            "in": "query",
+            "description": "If set, only list clicks after the click with the given uuid. Use this to continue chunked retrieval to get the next 10000 clicks",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "seconds",
+            "in": "query",
+            "description": "if > 0, it will only return history entries from the last 'seconds' seconds",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "default": "0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/StationClick.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checksteps": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of steps that needed to be done to finish a station check",
+        "operationId": "getStationsCheckSteps",
+        "parameters": [
+          {
+            "name": "uuids",
+            "in": "query",
+            "required": true,
+            "description": "Comma-separated list of UUIDs of stations, may be array in JSON",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/StationCheckStep.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stations/search": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of radio stations that match the search. It will search for the station whose attribute contains the search term",
+        "operationId": "findStations",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of the station",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "nameExact",
+            "in": "query",
+            "description": "True: only exact matches, otherwise all matches",
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Country of the station",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "countryExact",
+            "in": "query",
+            "description": "True: only exact matches, otherwise all matches",
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            }
+          },
+          {
+            "name": "countrycode",
+            "in": "query",
+            "description": "2-digit countrycode of the station (see ISO 3166-1 alpha-2)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "State of the station",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "stateExact",
+            "in": "query",
+            "description": "True: only exact matches, otherwise all matches",
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            }
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Language of the station",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "languageExact",
+            "in": "query",
+            "description": "True: only exact matches, otherwise all matches",
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            }
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "description": "Tag of the station",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tagExact",
+            "in": "query",
+            "description": "True: only exact matches, otherwise all matches",
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            }
+          },
+          {
+            "name": "tagList",
+            "in": "query",
+            "description": "A comma-separated list of tag. It can also be an array of string in JSON HTTP POST parameters. All tags in list have to match.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "codec",
+            "in": "query",
+            "description": "Codec of the station",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bitrateMin",
+            "in": "query",
+            "description": "Minimum of kbps for bitrate field of stations in result",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": "0"
+            }
+          },
+          {
+            "name": "bitrateMax",
+            "in": "query",
+            "description": "Maximum  of kbps for bitrate field of stations in result",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": "1000000"
+            }
+          },
+          {
+            "name": "has_geo_info",
+            "in": "query",
+            "description": "Not set=display all, true=show only stations with geo_info, false=show only stations without geo_info",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "has_extended_info",
+            "in": "query",
+            "description": "Not set=display all, true=show only stations which do provide extended information, false=show only stations without extended information",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "is_https",
+            "in": "query",
+            "description": "Not set=display all, true=show only stations which have https url, false=show only stations that do stream unencrypted with http",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Name of the attribute the result list will be sorted by",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "name",
+                "url",
+                "homepage",
+                "favicon",
+                "tags",
+                "country",
+                "state",
+                "language",
+                "votes",
+                "codec",
+                "bitrate",
+                "lastcheckok",
+                "lastchecktime",
+                "clicktimestamp",
+                "clickcount",
+                "clicktrend",
+                "changetimestamp",
+                "random"
+              ],
+              "default": "name"
+            }
+          },
+          {
+            "name": "reverse",
+            "in": "query",
+            "description": "Reverse the result list if set to true",
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            }
+          },
+          {
+            "name": "hidebroken",
+            "in": "query",
+            "description": "Do not count broken stations",
+            "schema": {
+              "type": "boolean",
+              "default": "false"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Starting value of the result list from the database. For example, if you want to do paging on the server side",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": "0"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of returned datarows (stations) starting with offset",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": "100000"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Station.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stations/byuuid": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of radio stations that have an exact UUID match",
+        "operationId": "findStationsByUuid",
+        "parameters": [
+          {
+            "name": "uuids",
+            "in": "query",
+            "required": true,
+            "description": "MANDATORY, comma-separated list of UUIDs",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Station.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stations/byurl": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of radio stations that have an exact URL match",
+        "operationId": "findStationsByUrl",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "description": "MANDATORY, URL of the station",
+            "schema": {
+              "type": "string",
+              "example": "http://this.is.a.link/test.mp3"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Station.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stations/topclick": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of the stations that are clicked the most. You can add a parameter with the number of wanted stations",
+        "operationId": "findStationsTopClick",
+        "parameters": [
+          {
+            "$ref": "param/Filter.json#/hidebroken"
+          },
+          {
+            "$ref": "param/Filter.json#/offset"
+          },
+          {
+            "$ref": "param/Filter.json#/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Station.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stations/topvote": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of the highest-voted stations. You can add a parameter with the number of wanted stations",
+        "operationId": "findStationsTopVote",
+        "parameters": [
+          {
+            "$ref": "param/Filter.json#/hidebroken"
+          },
+          {
+            "$ref": "param/Filter.json#/offset"
+          },
+          {
+            "$ref": "param/Filter.json#/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Station.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stations/lastclick": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of stations that were clicked recently",
+        "operationId": "findStationsLastClick",
+        "parameters": [
+          {
+            "$ref": "param/Filter.json#/hidebroken"
+          },
+          {
+            "$ref": "param/Filter.json#/offset"
+          },
+          {
+            "$ref": "param/Filter.json#/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Station.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stations/lastchange": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of stations that were added or changed recently",
+        "operationId": "findStationsLastChange",
+        "parameters": [
+          {
+            "$ref": "param/Filter.json#/hidebroken"
+          },
+          {
+            "$ref": "param/Filter.json#/offset"
+          },
+          {
+            "$ref": "param/Filter.json#/limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/Station.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/url/{uuid}": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "Increase the click count of a station by one. This should be called everytime when a user starts playing a stream to mark the stream more popular than others. Every call to this endpoint from the same IP address and for the same station only gets counted once per day. The call will return detailed information about the stream",
+        "operationId": "clickStation",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "UUID of the station",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "result/ClickStationResult.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stations/vote/{uuid}": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "Increase the vote count for the station by one. Can only be done by the same IP address for one station every 10 minutes. If it works, the changed station will be returned as result",
+        "operationId": "voteForStation",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "description": "UUID of the station",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "result/Result.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/add": {
+      "post": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "Add a radio station to the database",
+        "operationId": "addStation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "object/NewStation.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "result/AddStationResult.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/stats": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "Web service stats",
+        "operationId": "getServerStats",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "object/ServerStats.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/servers": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "A list of server mirrors. A DNS look-up of all.api.radio-browser.info is performed followed by a reverse one for every result getting from the first request. This should be done on the client. ONLY USE THIS if your client is not able to do DNS look-ups",
+        "operationId": "getServerMirrors",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "object/ServerMirror.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/config": {
+      "get": {
+        "tags": [
+          "RadioBrowser"
+        ],
+        "summary": "The current active server config",
+        "operationId": "getServerConfig",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "object/ServerConfig.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

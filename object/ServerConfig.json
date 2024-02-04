@@ -1,0 +1,107 @@
+{
+  "type": "object",
+  "properties": {
+    "check_enabled": {
+      "type": "boolean"
+    },
+    "prometheus_exporter_enabled": {
+      "type": "boolean"
+    },
+    "pull_servers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": "http://nl1.api.radio-browser.info"
+      }
+    },
+    "tcp_timeout_seconds": {
+      "type": "integer",
+      "format": "int32",
+      "example": "10"
+    },
+    "broken_stations_never_working_timeout_seconds": {
+      "type": "integer",
+      "format": "int32",
+      "example": "172800"
+    },
+    "broken_stations_timeout_seconds": {
+      "type": "integer",
+      "format": "int32",
+      "example": "432000"
+    },
+    "checks_timeout_seconds": {
+      "type": "integer",
+      "format": "int32",
+      "example": "259200"
+    },
+    "click_valid_timeout_seconds": {
+      "type": "integer",
+      "format": "int32",
+      "example": "86400"
+    },
+    "clicks_timeout_seconds": {
+      "type": "integer",
+      "format": "int32",
+      "example": "259200"
+    },
+    "mirror_pull_interval_seconds": {
+      "type": "integer",
+      "format": "int32",
+      "example": "300"
+    },
+    "update_caches_interval_seconds": {
+      "type": "integer",
+      "format": "int32",
+      "example": "300"
+    },
+    "server_name": {
+      "type": "string",
+      "example": "de1.api.radio-browser.info"
+    },
+    "server_location": {
+      "type": "string",
+      "example": "netcup.de"
+    },
+    "server_country_code": {
+      "type": "string",
+      "example": "DE"
+    },
+    "check_retries": {
+      "type": "integer",
+      "format": "int32",
+      "example": "5"
+    },
+    "check_batchsize": {
+      "type": "integer",
+      "format": "int32",
+      "example": "100"
+    },
+    "check_pause_seconds": {
+      "type": "integer",
+      "format": "int32",
+      "example": "60"
+    },
+    "api_threads": {
+      "type": "integer",
+      "format": "int32",
+      "example": "5"
+    },
+    "cache_type": {
+      "type": "string",
+      "example": "redis"
+    },
+    "cache_ttl": {
+      "type": "integer",
+      "format": "int32",
+      "example": "60"
+    },
+    "language_replace_filepath": {
+      "type": "string",
+      "example": "https://radiobrowser.gitlab.io/radiobrowser-static-data/language-replace.csv"
+    },
+    "language_to_code_filepath": {
+      "type": "string",
+      "example": "/etc/radiobrowser/language-to-code.csv"
+    }
+  }
+}

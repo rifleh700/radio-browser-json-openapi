@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "00s"
+    },
+    "stationcount": {
+      "type": "integer",
+      "format": "int64",
+      "example": "3"
+    }
+  }
+}

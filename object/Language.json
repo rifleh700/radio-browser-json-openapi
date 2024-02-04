@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "albanian"
+    },
+    "iso_639": {
+      "type": "string",
+      "example": "sq"
+    },
+    "stationcount": {
+      "type": "integer",
+      "format": "int64",
+      "example": "1"
+    }
+  }
+}

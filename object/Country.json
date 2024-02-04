@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Albania"
+    },
+    "iso_3166_1": {
+      "type": "string",
+      "example": "AL"
+    },
+    "stationcount": {
+      "type": "integer",
+      "format": "int64",
+      "example": "1"
+    }
+  }
+}

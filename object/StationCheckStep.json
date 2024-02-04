@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "stepuuid": {
+      "type": "string",
+      "description": "An unique id for this StationCheckStep",
+      "example": "01234567-89ab-cdef-0123-456789abcdef"
+    },
+    "parent_stepuuid": {
+      "type": "string",
+      "description": "An unique id for referencing another StationCheckStep. Is set if this step has a parent",
+      "example": "01234567-89ab-cdef-0123-456789abcdef"
+    },
+    "checkuuid": {
+      "type": "string",
+      "description": "An unique id for referencing a StationCheck",
+      "example": "01234567-89ab-cdef-0123-456789abcdef"
+    },
+    "stationuuid": {
+      "type": "string",
+      "description": "An unique id for referencing a Station",
+      "example": "01234567-89ab-cdef-0123-456789abcdef"
+    },
+    "url": {
+      "type": "string",
+      "description": "The url that this step of the checking process handled",
+      "example": "http://stream.example.com:8000/streamname"
+    },
+    "urltype": {
+      "type": "string",
+      "enum": [
+        "STREAM",
+        "REDIRECT",
+        "PLAYLIST"
+      ],
+      "description": "Does represent which kind of url it is. One of the following: STREAM, REDIRECT, PLAYLIST"
+    },
+    "error": {
+      "type": "string",
+      "description": "URL to the homepage of the stream, so you can direct the user to a page with more information about the stream",
+      "example": "BadError"
+    },
+    "creation_iso8601": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of step creation",
+      "example": "2021-04-13T20:11:19Z"
+    }
+  }
+}
